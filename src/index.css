@@ -17,23 +17,27 @@ body {
 }
 
 .generateBtn {
+  height: 7vh;
   transition: 0.2s ease-in-out;
   display: none !important;
   width: 100%;
-  height: 7vh;
   font-size: 20px;
 }
 
 .colors {
   display: flex;
-  flex: 1;
+  height: 100vh;
+}
+
+.generateBtnWrap {
+  height: 7vh;
 }
 
 @media screen and (max-width: 1200px) {
   .colors {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    height: 93vh;
   }
 
   .app {
