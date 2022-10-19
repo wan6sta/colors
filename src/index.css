@@ -11,13 +11,12 @@ body {
 }
 
 .app {
-  display: flex;
   height: 100vh;
+  display: flex;
   width: 100%;
 }
 
 .generateBtn {
-  flex-grow: 0.05;
   transition: 0.2s ease-in-out;
   display: none !important;
   width: 100%;
@@ -30,11 +29,16 @@ body {
 }
 
 .generateBtnWrap {
-  flex: 1;
+
 }
 
 @media screen and (max-width: 1200px) {
+  .app {
+    height: 100vh;
+  }
+
   .colors {
+    height: 93vh;
     display: flex;
     flex-direction: column;
   }
@@ -45,6 +49,7 @@ body {
   }
 
   .generateBtn {
+    height: 7vh;
     display: block !important;
   }
 }
