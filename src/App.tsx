@@ -51,11 +51,10 @@ export const App = () => {
       <div className='colors'>
         {Colors}
       </div>
-      <div className='generateBtnWrap'>
-        <Button style={{color: colors[0]?.color}} onClick={changeColors} className='generateBtn'>
-          Generate
-        </Button>
-      </div>
+
+      <Button style={{color: colors[0]?.color}} onClick={changeColors} className='generateBtn'>
+        Generate
+      </Button>
     </div>
   )
 }

@@ -17,7 +17,7 @@ body {
 }
 
 .generateBtn {
-  height: 7vh;
+  flex-grow: 0.05;
   transition: 0.2s ease-in-out;
   display: none !important;
   width: 100%;
@@ -26,18 +26,17 @@ body {
 
 .colors {
   display: flex;
-  height: 100vh;
+  flex: 1;
 }
 
 .generateBtnWrap {
-  height: 7vh;
+  flex: 1;
 }
 
 @media screen and (max-width: 1200px) {
   .colors {
     display: flex;
     flex-direction: column;
-    height: 93vh;
   }
 
   .app {
