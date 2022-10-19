@@ -1,26 +1,61 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {useColors} from './components/providers/colorProvider/useColors';
+import {Color} from './components/ui/Color/Color';
+import {KeyboardEvent, useEffect, useRef} from 'react'
+import {randomColor} from './helpers/randomColors/randomColor';
+import {Button} from '@mui/material';
+import chroma from 'chroma-js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export type Color = {
+  id: string
+  color: string
+  isLocked: boolean
 }
 
-export default App;
+export const App = () => {
+  const {colors, setColors} = useColors()
+
+  const changeLockStatus = (id: string) => {
+    setColors(colors.map(color => {
+      if (color.id === id) color.isLocked = !color.isLocked
+      return color
+    }))
+  }
+
+  const changeColors = () => {
+    const newColors = colors.map(color => {
+      if (color.isLocked) return color
+      color.color = randomColor()
+      return color
+    }) as Color[]
+
+    document.location.hash = colors.map(color => color.color).map(col => col.substring(1)).join('-')
+    setColors(newColors)
+  }
+
+  const spaceDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.code.toLowerCase() !== 'space') return
+
+    changeColors()
+  }
+
+  const Colors = colors.map(color => (
+    <Color
+      key={color.id}
+      color={color}
+      changeLockStatus={changeLockStatus}
+    />
+  ))
+
+  return (
+    <div tabIndex={0} onKeyDown={spaceDown} className='app'>
+      <div className='colors'>
+        {Colors}
+      </div>
+
+      <Button style={{color: colors[0]?.color}} onClick={changeColors} className='generateBtn'>
+        Generate
+      </Button>
+    </div>
+  )
+}
+

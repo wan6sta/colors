@@ -1,0 +1,93 @@
+.Color {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.Color > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  height: 60px;
+  width: 60px;
+  min-width: 50px;
+  border-radius: 50%;
+  transition: 0.1s ease-in;
+}
+
+.Color > button:hover {
+  transform: scale(105%);
+  transform: translateY(-2px);
+}
+
+.Color > button > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.Color > button > span > svg {
+  height: 30px;
+  width: 30px;
+}
+
+.colorText {
+  border-radius: 10px !important;
+  padding: 5px !important;
+  width: auto !important;
+  height: auto !important;
+  font-size: 30px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .Color {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .Color > button {
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px;
+  }
+
+  .colorText {
+    font-size: 20px !important;
+  }
+
+  .Color > button > span > svg {
+    height: 25px;
+    width: 25px;
+  }
+}
+
+.text {
+  position: relative;
+}
+
+.copy {
+  opacity: 0;
+  width: 20px !important;
+  height: 20px !important;
+  position: absolute;
+  right: -15px;
+  transition: 0.2s ease-in-out !important;
+}
+
+.show {
+  opacity: 1;
+}
+
+@media screen and (max-width: 1200px) {
+  .copy {
+    width: 15px !important;
+    height: 15px !important;
+    right: -10px;
+  }
+}
